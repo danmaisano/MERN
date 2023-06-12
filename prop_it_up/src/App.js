@@ -7,22 +7,22 @@ function App() {
       <Person
       lastName = {"Arelius"}
       firstName = {"Lindon"}
-      age = {25}
+      initialAge = {25}
       hair = {"brown"} />
       <Person
       lastName = {"Arelius"}
       firstName = {"Yeren"}
-      age = {25}
+      initialAge = {25}
       hair = {"red"} />
       <Person
       lastName = {"Akura"}
       firstName = {"Mercy"}
-      age = {25}
+      initialAge = {25}
       hair = {"black"} />
       <Person
       lastName = {"Akura"}
       firstName = {"Malice"}
-      age = {450}
+      initialAge = {450}
       hair = {"midnight"} />
     </div>
     
