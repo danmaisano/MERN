@@ -35,7 +35,7 @@ const CreateBoxes = (props) => {
                 <input type="text" name="boxColor" id="boxColor" value={props.boxColor} onChange ={ (e) => props.setBoxColor(e.target.value)}/>
                 <p>{ colorError }</p>
                 <label htmlFor="boxSize">What Size of Box?: </label>
-                <input type="text" name="boxSize" id="boxSize" value={props.boxSize} onChange ={ (e) => props.setBoxSize(e.target.value)}/>
+                <input type="number" name="boxSize" id="boxSize" value={props.boxSize} onChange ={ (e) => props.setBoxSize(e.target.value)}/>
                 <p>{ sizeError }</p>
                 <button className = "myBoxes">Add Box</button>
             </form>
