@@ -4,7 +4,6 @@ const ToDo = (props) => {
 
     useEffect(() => {
         localStorage.setItem('taskList', JSON.stringify(props.taskList));
-        // console.log(props.taskList)
     }, [props.taskList]);
     
     const deleteTask = (idx) => {
