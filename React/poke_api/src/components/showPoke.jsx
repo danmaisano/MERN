@@ -20,7 +20,6 @@ const ShowPoke = () => {
         <div>
             {pokeList.map((poke,idx)=>(
                 <p key={idx}>{poke}</p> 
-                    
             ))}
         </div>
     )
