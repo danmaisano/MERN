@@ -2,6 +2,7 @@
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+  /* min-height: 100vh; */
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -27,7 +28,7 @@ body {
   margin: auto;
   place-items: center;
   min-width: 420px;
-  min-height: 100vh;
+  min-height: 60vh;
 }
 
 h1 {
@@ -69,7 +70,6 @@ button:focus-visible {
 
 .container {
   margin-top: 10%;
-  display: flex;
   justify-content: center;
   align-items: center;
 }
@@ -81,4 +81,33 @@ button:focus-visible {
 h3{
   text-align: center;
   margin-bottom: 8%;
+}
+h2{
+  margin-top: -5%;
+  margin-bottom: 5%;
+}
+
+h4, h5{
+  text-align: center;
+}
+
+.centerThis{
+  display: flex;
+  justify-content: center;
+}
+
+.slightMargin{
+  margin: 20px 0px;
+}
+
+.topMargin{
+  margin-top: 200px;
+}
+
+.lessTop {
+  margin-top: -30%;
+}
+
+.lessTop2 {
+  margin-top: -10%;
 }

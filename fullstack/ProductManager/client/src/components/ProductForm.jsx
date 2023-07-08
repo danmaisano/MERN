@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import axios from 'axios';
-const ProductForm = () => {
+const ProductForm = (props) => {
     //keep track of what is being typed via useState hook
     const [title, setTitle] = useState(""); 
     const [price, setPrice] = useState(0);
     const [description, setDescription] = useState("");
-    //handler when the form is submitted
+    const {productList, setProductList} = props
     const onSubmitHandler = (e) => {
         //prevent default behavior of the submit
         e.preventDefault();
@@ -21,14 +21,15 @@ const ProductForm = () => {
                 document.getElementById("title").value = ""
                 document.getElementById("price").value = ""
                 document.getElementById("description").value = ""
+                setProductList([...productList, res.data])
             })
             .catch(err=>console.log(err))
     }
     
     return (
-        <div className="container">
+        <div className="container d-flex">
             <form onSubmit = {onSubmitHandler}>
-                <h3>Product Manager</h3>
+                <h3 className="lessTop">Product Manager</h3>
                 <div className="mb-3">
                     <label className="form-label">Title</label>
                     <input type="text" className="form-control" id="title" onChange = {(e) => setTitle(e.target.value)}/>

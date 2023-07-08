@@ -42,3 +42,12 @@
 }
 
 
+.container {
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+}
+
+.topMargin{
+  margin-top: 20%;
+}
