@@ -73,6 +73,12 @@ button:focus-visible {
   justify-content: center;
   align-items: center;
 }
+.container2 {
+  margin-top: 10%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 
 .form-control {
   width: 350px;
@@ -94,6 +100,8 @@ h4, h5{
 .centerThis{
   display: flex;
   justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 .slightMargin{
@@ -110,4 +118,22 @@ h4, h5{
 
 .lessTop2 {
   margin-top: -10%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+}
+
+
+.centerThisForm{
+  width: 65%;
+  justify-content: end;
+  align-items: center;
+  text-align: center;
+  display:flex;
+}
+
+.margin-negative{
+  margin-bottom: 3%;
 }

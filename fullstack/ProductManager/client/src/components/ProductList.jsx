@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 
 const AllProducts = (props) => {
-    const { productList, setProductList } = props;
+    const { productList, setProductList, removeFromDom } = props;
 
     useEffect(() => {
         axios
@@ -17,6 +17,14 @@ const AllProducts = (props) => {
             });
     }, []);
 
+    const deleteProduct = (productId) => {
+        axios.delete('http://localhost:8000/api/products/' + productId)
+            .then(res => {
+                removeFromDom(productId)
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <div className="container">
             <h2 className="centerThis lessTop2">Current Products</h2>
@@ -24,6 +32,9 @@ const AllProducts = (props) => {
                 return (
                     <div key={product._id}>
                         <Link to={`/products/${product._id}`} className="centerThis slightMargin"> {product.title} </Link>
+                        <div className="button-container mb-5">
+                            <button className="btn btn-warning btn-sm" onClick={(e) => {deleteProduct(product._id)}}>Delete</button>
+                        </div>
                     </div>
                 );
             })}

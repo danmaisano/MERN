@@ -18,6 +18,7 @@ const Detail = (props) => {
             <h4 className="topMargin">{product.title}</h4>
             <h5>Price: {product.price}</h5>
             <h5>{product.description}</h5>
+            <Link to={`/products/edit/${product._id}`} className='centerThis'>Update this Product</Link>
             <Link to={`/`} className='centerThis'> Go Home </Link>
         </div>
     );
