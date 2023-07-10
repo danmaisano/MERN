@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Detail from './views/detail';
-import Update from './views/Update';
+import Update from './components/Update';
 import Home from './views/Home';
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
