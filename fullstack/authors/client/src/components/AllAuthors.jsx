@@ -9,9 +9,7 @@ const AllAuthors = (props) => {
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/authors")
-      .then((res) => {
-        setAuthorList(res.data);
-      })
+      .then((res) => { setAuthorList(res.data)})
       .catch((err) => res.json({ message: "Something went wrong!", error: err }));
   }, []);
 

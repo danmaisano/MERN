@@ -13,7 +13,7 @@ module.exports.createAuthor = (req, res) => {
     .then((newAuthor) => {
       res.json(newAuthor);
     })
-    .catch((err) => res.json({ message: "Something went wrong!", error: err }));
+    .catch((err) => res.status(400).json(err));
 };
 
 module.exports.getOneAuthor = (req, res) => {
@@ -29,12 +29,14 @@ module.exports.deleteAuthor = (req, res) => {
 };
 
 module.exports.updateAuthor = (req, res) => {
-  Author.findByIdAndUpdate(req.params.id, req.body, {
-    new: true,
-    runValidators: true,
-  })
+  Author.findByIdAndUpdate(req.params.id)
+    .then((author) => {
+      author.firstName = req.body.firstName;
+      author.lastName = req.body.lastName;
+      return author.save();
+    })
     .then((updatedAuthor) => {
       res.json(updatedAuthor);
     })
-    .catch((err) => res.json({ message: "Something went wrong!", error: err }));
+    .catch((err) => res.status(400).json(err));
 };

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import AddAuthor from './assets/views/addAuthor'
-import AllAuthors from './components/allAuthors'
+import AllAuthors from './components/AllAuthors'
 import UpdateAuthor from './assets/views/UpdateAuthor'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'

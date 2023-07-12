@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
-import UpdateButton from './UpdateButton';
 
 const Form = (props) => {
   const { selectedAuthor } = props;
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [errors, setErrors] = useState([])
 	const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,11 +22,11 @@ const Form = (props) => {
 			axios
         .patch(`http://localhost:8000/api/authors/${selectedAuthor._id}`, { firstName, lastName })
         .then(() => {
-          console.log("update successful")
+          navigate('/')
         })
         .catch((err) => {
-          console.log(err);
-        });
+          {err.response.data.errors ? setErrors(err.response.data.errors): ""}
+          });
 		}
 		else {
 			axios
@@ -38,16 +38,17 @@ const Form = (props) => {
         navigate('/')
       })
       .catch((err) => {
-        console.log(err);
+        {err.response.data.errors ? setErrors(err.response.data.errors): ""}
       });
-		}
   };
+}
 
   return (
     <div className="container">
       {selectedAuthor ? <h3>Update this Author</h3>: ""}
       <form onSubmit={onSubmitHandler}>
         <div className="mb-3 text-start">
+        {errors.firstName && <p>{errors.firstName.message}</p>}
           <label className="form-label">First Name</label>
           <input
             type="text"
@@ -58,6 +59,7 @@ const Form = (props) => {
           />
         </div>
         <div className="mb-3 text-start">
+        {errors.lastName && <p>{errors.lastName.message}</p>}
           <label className="form-label">Last Name</label>
           <input
             type="text"
@@ -68,7 +70,7 @@ const Form = (props) => {
           />
         </div>
         <div className="d-flex">
-          {selectedAuthor ? <UpdateButton authorId = {selectedAuthor._id} updateTarget="authors"/> : <button type="submit" className="btn btn-primary"> Submit </button>}
+          <button type="submit" className="btn btn-primary"> Submit </button>
           <button type='button' className="btn btn-secondary ms-2">
                 <Link to={'/'} className="text-light">Go Home</Link>
           </button>
