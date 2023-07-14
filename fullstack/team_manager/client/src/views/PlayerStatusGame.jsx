@@ -6,6 +6,8 @@ const PlayerStatusGame = (props) => {
   const { playerList, setPlayerList } = props;
   const { gameId } = useParams();
 
+  const sortedPlayerList = playerList.sort((a, b) => a.name.localeCompare(b.name));
+
   useEffect (() => {
     axios
     .get("http://localhost:8000/api/players")
@@ -54,7 +56,7 @@ const PlayerStatusGame = (props) => {
             </tr>
           </thead>
           <tbody>
-            {playerList.map((player) => (
+            {sortedPlayerList.map((player) => (
               <tr key={player._id}>
                 <td>{player.name}</td>
                 <td>

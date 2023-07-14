@@ -23,7 +23,7 @@ function App() {
   },[]);
 
   return (
-    <>
+    <div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Dashboard playerList = {playerList} setPlayerList = {setPlayerList} deletePlayer = {deletePlayer}/>}/>
@@ -32,7 +32,7 @@ function App() {
           <Route path="/players/update/:id" element={<UpdatePlayer playerList = {playerList} setPlayerList = {setPlayerList}/>}/>
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   )
 }
 

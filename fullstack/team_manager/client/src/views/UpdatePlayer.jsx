@@ -26,24 +26,26 @@ const UpdatePlayer = (props) => {
 
     const submitHandler = (e) => {
         e.preventDefault();
-        if(name.length < 2){
-            setErrors("Name must be at least two characters")
-            return
+        if (name.length < 2) {
+            setErrors("Name must be at least two characters");
+            return;
         }
         axios
-        .patch(`http://localhost:8000/api/players/${id}`, {name, preferred_position})
-        .then((res) => {
-            console.log(res.data)
-            axios
-            .get('http://localhost:8000/api/players')
-            .then(res => setPlayerList(res.data))
-            .catch((err) => res.json({message: "Something went wrong!", error: err}))
-            navigate('/')
+            .patch(`http://localhost:8000/api/players/${id}`, { name, preferred_position })
+            .then((res) => {
+            const updatedPlayer = res.data;
+            setPlayerList((prevPlayerList) => {
+                const updatedList = prevPlayerList.map((player) =>
+                player._id === updatedPlayer._id ? updatedPlayer : player
+                );
+                return updatedList;
+            });
+            navigate('/');
         })
         .catch((err) => {
-            err.response.data.errors ? setErrors(err.response.data.errors): ""
-            });
-    }
+            err.response.data.errors ? setErrors(err.response.data.errors) : "";
+        });
+    };
 
     return(
         loaded && <div>

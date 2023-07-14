@@ -5,6 +5,8 @@ import DeleteButton from '../components/Delete';
 const Dashboard = (props) => {
     const {playerList, setPlayerList, deletePlayer} = props;
 
+    const sortedPlayerList = playerList.sort((a, b) => a.name.localeCompare(b.name));
+
     return(
         <div>
             <div className="container">
@@ -22,7 +24,7 @@ const Dashboard = (props) => {
                         </tr>
                     </thead>
                     <tbody>
-                        {playerList.map((player) => {
+                        {sortedPlayerList.map((player) => {
                             return(
                                 <tr key={player._id}>
                                     <td>{player.name}</td>
@@ -35,8 +37,6 @@ const Dashboard = (props) => {
                                         </Link>
                                         <DeleteButton playerId={player._id} onDelete={deletePlayer} />
                                     </td>
-
-
                                 </tr>
                             )
                         })}
